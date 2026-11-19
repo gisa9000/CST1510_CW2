@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-# ---- Settings: the only part you change for your own data ----------------
+# ---- Settings: the only part where you change for your own data ----------------
 
 URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 
@@ -79,7 +79,7 @@ def save_data(df, path):
     path.parent.mkdir(exist_ok=True)
     df.to_csv(path, index=False)
     print(f"Saved {len(df)} rows to {path}")
-
+  
 
 if __name__ == "__main__":
     data = get_data(URL, PARAMS)
@@ -88,3 +88,5 @@ if __name__ == "__main__":
         table = tidy_data(table)
         print(table.head())
         save_data(table, RAW_FILE)
+
+ 
